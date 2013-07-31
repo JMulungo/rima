@@ -1,0 +1,43 @@
+
+
+<h1>Listing risks</h1>
+<hr><br>
+
+<br><hr>
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>From date</th>
+    <th>From time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @risks.each do |risk| %>
+  <tr>
+    <td><%= risk.location_id %></td>
+    <td><%= risk.type_id %></td>
+    <td><%= risk.description %></td>
+    <td><%= risk.from_date %></td>
+    <td><%= risk.from_time %></td>
+    <td><%= link_to 'Show', risk %></td>
+    <td><%= link_to 'Edit', edit_risk_path(risk) %></td>
+    <td><%= link_to 'Destroy', risk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @risks %>
+    </div>
+    <%= will_paginate @risks, :container => false %>
+</div>
+
+<br />
+
+<%= link_to 'New Risk', new_risk_path %>
+
